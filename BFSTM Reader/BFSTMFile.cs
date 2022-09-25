@@ -9,6 +9,7 @@ namespace BFSTM_Reader
         private const long BYTE_ORDER_MARK = 0x04;
         private const long HEADER_SIZE = 0x06;
         private const long VERSION_NUMBER = 0x08;
+        private const long FILE_SIZE = 0x0C;
 
         private FileStream fileStream;
         private BinaryReader binaryReader;
@@ -37,10 +38,16 @@ namespace BFSTM_Reader
             return binaryReader.ReadUInt16();
         }
 
-        internal int VersionNumber()
+        internal uint VersionNumber()
         {
             fileStream.Seek(VERSION_NUMBER, SeekOrigin.Begin);
-            return binaryReader.ReadInt32();
+            return binaryReader.ReadUInt32();
+        }
+
+        internal uint FileSize()
+        {
+            fileStream.Seek(FILE_SIZE, SeekOrigin.Begin);
+            return binaryReader.ReadUInt32();
         }
 
         public void Dispose()

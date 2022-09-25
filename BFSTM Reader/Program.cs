@@ -41,6 +41,7 @@ namespace BFSTM_Reader
                 Console.WriteLine("Byte Order Mark: " + ToHexString(bfstmFile.ByteOrderMark()));
                 Console.WriteLine("Header Size: " + ToHexString(bfstmFile.HeaderSize()));
                 Console.WriteLine("Version Number: " + bfstmFile.VersionNumber().ToString());
+                Console.WriteLine("File size (bytes): " + bfstmFile.FileSize().ToString());
             }
             Console.ReadKey();
         }
